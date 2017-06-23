@@ -1,0 +1,69 @@
+{
+  "name": "react-aspnet-core-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "sjorrillo",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:dev",
+    "build:dev": "bnr do-build:dev",
+    "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
+    "clean:dist": "npm run rimraf -- dist",
+    "rimraf": "rimraf",
+    "server:dev": "bnr start-dev",
+    "server:dev:hmr": "npm run server:dev -- --inline --hot",
+    "start": "npm run server:dev:hmr"
+  },
+  "betterScripts": {
+    "do-build:dev": {
+      "command": "bnr do-build-module webpack.config.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "do-build-module": {
+      "command": "babel-node ./node_modules/webpack/bin/webpack  --progress --profile --config"
+    },
+    "start-dev": {
+      "command": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.js --progress --profile --watch --open --content-base src/",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 3000
+      }
+    }
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "i18next": "^8.4.1",
+    "js-yaml": "^3.8.4",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "react-router": "3.0.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "superagent": "^3.5.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "better-npm-run": "^0.0.15",
+    "html-webpack-plugin": "^2.28.0",
+    "rimraf": "^2.6.1",
+    "webpack": "2.6.1",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-hot-middleware": "^2.18.0",
+    "webpack-merge": "^4.1.0"
+  }
+}
