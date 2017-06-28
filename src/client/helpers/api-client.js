@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 import URL from 'url';
-// import config from '../config';
+import config from '../config';
 
 export default class ApiClient {
 
@@ -8,7 +8,7 @@ export default class ApiClient {
     ['get', 'post', 'put', 'patch', 'del'].forEach(method => {
       this[method] = (path, options) =>
         new Promise((resolve, reject) => {
-          const url = this.formatUrl('config.apiUrl', path);
+          const url = this.formatUrl(config.apiUrl, path);
           const request = this.getRequestOptions(url, method, options);
 
           request.end((err, { body } = {}) => {
@@ -31,6 +31,10 @@ export default class ApiClient {
 
     if (this.headers) {
       request.set(this.headers);
+    }
+
+    if (options && options.headers) {
+      request.set(options.headers);
     }
 
     if (options && options.data) {

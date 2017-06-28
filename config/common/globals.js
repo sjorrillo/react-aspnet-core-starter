@@ -1,6 +1,6 @@
 module.exports = {
   Date: global.Date,
-  process: global.process,
+  process: global.process || process,
   document: global.document,
   location: (global.window || {}).location,
   window: global.window,

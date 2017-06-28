@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '../app/layout';
+import Page from '../shared/page';
 
 export default () =>
-  <Layout>
-    <p>Home</p>
-  </Layout>;
+  <Page header="Header">
+    <p>Home content</p>
+  </Page>;

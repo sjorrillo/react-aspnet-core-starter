@@ -9,8 +9,7 @@ const getEnvironment = () => {
   return nodeEnv;
 };
 
-
-export const createConfig = ({ configsDir }) => {
+export const createConfig = (setupEnvFn = () => {}) => {
   const nodeEnv = getEnvironment();
   const setupConfig = {
     env: nodeEnv.toLowerCase(),
@@ -19,7 +18,6 @@ export const createConfig = ({ configsDir }) => {
     isProduction: (/production/i).test(nodeEnv),
   };
 
-  const baseConfig = require(`${configsDir}/${baseEnvironment}`); // eslint-disable-line
-  const envConfig = setupConfig.env === baseEnvironment ? {} : require(`${configsDir}/${setupConfig.env}`); // eslint-disable-line
+  const { baseConfig = {}, envConfig = {} } = setupEnvFn(setupConfig, baseEnvironment);
   return merge(baseConfig, envConfig, setupConfig);
 };

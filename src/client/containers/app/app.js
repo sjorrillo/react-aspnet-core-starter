@@ -1,6 +1,5 @@
-import React, { Component, Children, cloneElement } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Layout from './layout';
 
 export default class App extends Component {
 
@@ -9,9 +8,6 @@ export default class App extends Component {
   };
 
   render() {
-    const childrenArray = Children.toArray(this.props.children);
-    const layout = childrenArray.find(child => child.type === Layout);
-    console.log(childrenArray);
     return (
       <div>
         <h2>common content</h2>
