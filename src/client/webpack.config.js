@@ -7,9 +7,9 @@ const getRoot = fileName => root('src', 'client', fileName);
 export default makeConfig({
   env: config.env,
   entry: {
-    polyfills: getRoot('polyfills.js'),
-    vendor: getRoot('vendor.js'),
-    client: getRoot('client.js'),
+    // polyfills: getRoot('polyfills.js'),
+    // vendor: getRoot('vendor.js'),
+    client: getRoot('client.tsx'),
   },
   indexPath: getRoot('index.html'),
   outputPath: root('dist'),

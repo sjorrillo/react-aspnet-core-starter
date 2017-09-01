@@ -2,7 +2,16 @@ import superagent from 'superagent';
 import URL from 'url';
 import config from '../config';
 
+interface SuperagentOptions {
+  params?: object,
+  headers?: object,
+  data?: object | string;
+}
+
+type RestClientResponse = Promise<any | Error>;
+
 export default class ApiClient {
+  private headers;
 
   constructor() {
     ['get', 'post', 'put', 'patch', 'del'].forEach(method => {
@@ -11,7 +20,7 @@ export default class ApiClient {
           const url = this.formatUrl(config.apiUrl, path);
           const request = this.getRequestOptions(url, method, options);
 
-          request.end((err, { body } = {}) => {
+          request.end((err, { body } = { body: undefined }) => {
             if (err) {
               reject(body || err);
             } else {
@@ -20,9 +29,10 @@ export default class ApiClient {
           });
         });
     });
+
   }
 
-  getRequestOptions(url, method, options) {
+  private getRequestOptions(url, method, options) {
     const request = superagent[method](url);
 
     if (options && options.params) {
@@ -44,7 +54,7 @@ export default class ApiClient {
     return request;
   }
 
-  formatUrl(apiUrl, path) {
+  private formatUrl(apiUrl: string, path: string) {
     const url = path[0] === '/' ? path.substring(1) : path;
     return URL.resolve(apiUrl, url);
   }
@@ -53,9 +63,15 @@ export default class ApiClient {
     this.headers = null;
   }
 
-  setExtraHeaders(headers) {
+  setExtraHeaders(headers: object) {
     this.headers = {
       ...headers,
     };
   }
+
+  get(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
+  post(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
+  put(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
+  patch(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
+  del(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
 }

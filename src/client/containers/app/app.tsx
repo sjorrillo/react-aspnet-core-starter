@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { BasicProps } from '../../helpers/basic-props';
 
-export default class App extends Component {
+interface AppProps extends BasicProps {};
 
-  static propTypes = {
-    children: PropTypes.object.isRequired,
-  };
+export class App extends Component<AppProps, {}> {
 
   render() {
     return (

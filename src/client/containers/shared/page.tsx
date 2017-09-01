@@ -1,33 +1,26 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Layout } from '../../components';
+import { BasicProps } from '../../helpers/basic-props';
 
 const { Header, Footer, Content } = Layout;
 
-export default class Page extends Component {
+interface PageProps extends BasicProps {
+  header?: object | string;
+  footer?: object | string;
+}
 
-  static propTypes = {
-    children: PropTypes.object.isRequired,
-    header: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string,
-    ]),
-    footer: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string,
-    ]),
-  };
+export class Page extends Component<PageProps,{}> {
 
   renderHeader = () => {
     const { header } = this.props;
-    if (!header) return <noscript />;
+    if (!header) return null;
 
     return typeof header === 'string' ? <Header>{ header }</Header> : header;
   }
 
   renderFooter = () => {
     const { footer } = this.props;
-    if (!footer) return <noscript />;
+    if (!footer) return null;
 
     return typeof footer === 'string' ? <Footer>{ footer }</Footer> : footer;
   }

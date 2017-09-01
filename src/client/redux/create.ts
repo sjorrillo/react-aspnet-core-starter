@@ -7,8 +7,8 @@ import reducer from './modules/reducer';
 const getStoreCreator = middleware => {
   let storeCreator;
   // if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {
-  //   const { persistState } = require('redux-devtools'); // eslint-disable-line
-  //   const { DevTools } = require('../helpers/dev-tools/dev-tools'); // eslint-disable-line
+  //   const { persistState } = require('redux-devtools');
+  //   const { DevTools } = require('../helpers/dev-tools/dev-tools');
 
   //   storeCreator = compose(
   //     applyMiddleware(...middleware),
@@ -31,10 +31,10 @@ export default function createStore(client, routingMiddleware, data) {
   // }
 
   const store = storeCreator(reducer, data);
-
-  if (module.hot) {
-    module.hot.accept('./modules/reducer', () => {
-      store.replaceReducer(require('./modules/reducer')); // eslint-disable-line
+  const hotModule = (module as any).hot;
+  if (hotModule) {
+    hotModule.accept('./modules/reducer', () => {
+      store.replaceReducer(require('./modules/reducer'));
     });
   }
 

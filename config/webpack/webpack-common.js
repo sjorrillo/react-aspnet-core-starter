@@ -5,7 +5,7 @@ const webpackConfig = ({ entry, indexPath, outputPath }) => {
   const config = {
     entry,
     resolve: {
-      extensions: ['.json', '.js'],
+      extensions: ['.json', '.js', '.ts', '.tsx'],
       modules: [root('src'), root('node_modules')],
     },
     output: {
@@ -14,11 +14,16 @@ const webpackConfig = ({ entry, indexPath, outputPath }) => {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          // test: /\.js$/,
+          // use: [
+          //   {
+          //     loader: 'babel-loader',
+          //   },
+          // ]
+          test: /\.tsx?$/,
           use: [
-            {
-              loader: 'babel-loader',
-            },
+            { loader: 'babel-loader' },
+            { loader: 'awesome-typescript-loader', options: { silent: true } }
           ]
         }
       ]
