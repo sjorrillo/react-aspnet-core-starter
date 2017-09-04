@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BasicProps } from '../../helpers/basic-props';
 
-interface AppProps extends BasicProps {};
+interface AppProps extends BasicProps {}
 
 export class App extends Component<AppProps, {}> {
 

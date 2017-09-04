@@ -14,18 +14,13 @@ const webpackConfig = ({ entry, indexPath, outputPath }) => {
     module: {
       rules: [
         {
-          // test: /\.js$/,
-          // use: [
-          //   {
-          //     loader: 'babel-loader',
-          //   },
-          // ]
           test: /\.tsx?$/,
           use: [
             { loader: 'babel-loader' },
             { loader: 'awesome-typescript-loader', options: { silent: true } }
           ]
-        }
+        },
+        { test: /\.tsx?$/, loader: 'tslint-loader', enforce: 'pre', options: { failOnHint: true } }
       ]
     },
     plugins: [

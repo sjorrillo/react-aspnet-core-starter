@@ -1,4 +1,4 @@
-import React, { Component, Children } from 'react';
+import React, { Component } from 'react';
 import { BasicProps } from '../../helpers/basic-props';
 
 const createElement = nameOfElement => {
@@ -9,10 +9,9 @@ const createElement = nameOfElement => {
     static Content: any;
     render() {
       const { children, className, ...restProperties } = this.props;
-      const childrenArray = Children.toArray(children);
-      return <div className={ className } { ...restProperties }>{ children }</div>
+      return <div className={ className } { ...restProperties }>{ children }</div>;
     }
-  }
+  };
   layout.displayName = nameOfElement;
   return layout;
 };

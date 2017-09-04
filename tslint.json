@@ -1,0 +1,65 @@
+{
+  "extends": ["tslint:latest", "tslint-react"],
+  "rules": {
+    "arrow-parens": false,
+    "arrow-return-shorthand": [false],
+    "comment-format": [true, "check-space"],
+    "curly": [true, "ignore-same-line"],
+    "import-blacklist": [true, "rxjs"],
+    "interface-over-type-literal": false,
+    "interface-name": [true, "never-prefix"],
+    "jsx-curly-spacing": true,
+    "max-line-length": [true, 180],
+    "member-access": false,
+    "member-ordering": [true, {
+      "order": [
+        "static-field",
+        "instance-field",
+        "constructor",
+        "protected-instance-method",
+        "private-instance-method",
+        "public-instance-method"
+      ]
+    }],
+    "newline-before-return": false,
+    "no-angle-bracket-type-assertion": false,
+    "no-any": false,
+    "no-console": false,
+    "no-empty-interface": false,
+    "no-inferrable-types": [true, "ignore-params", "ignore-properties"],
+    "no-invalid-this": [true, "check-function-in-method"],
+    "no-null-keyword": false,
+    "no-object-literal-type-assertion": false,
+    "no-require-imports": false,
+    "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": true,
+    "no-this-assignment": [true, {
+      "allow-destructuring": true
+    }],
+    "no-unused-variable": [true, "react"],
+    "object-literal-sort-keys": false,
+    "object-literal-shorthand": false,
+    "one-variable-per-declaration": [false],
+    "only-arrow-functions": [true, "allow-declarations"],
+    "ordered-imports": [false],
+    "prefer-method-signature": false,
+    "prefer-template": true,
+    "semicolon": [true, "ignore-interfaces"],
+    "quotemark": [true, "single", "jsx-double"],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "objects": "always",
+          "arrays": "always",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        }
+      }
+    ],
+    "triple-equals": [true, "allow-null-check"],
+    "typedef": [true,"parameter", "property-declaration"],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"],
+    "whitespace": [true, "check-branch", "check-operator"]
+  }
+}

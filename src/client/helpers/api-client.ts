@@ -32,7 +32,7 @@ export default class ApiClient {
 
   }
 
-  private getRequestOptions(url, method, options) {
+  private getRequestOptions(url: string, method: string, options?: SuperagentOptions) {
     const request = superagent[method](url);
 
     if (options && options.params) {
@@ -70,8 +70,12 @@ export default class ApiClient {
   }
 
   get(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
+
   post(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
+
   put(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
+
   patch(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
+
   del(path: string, options?: SuperagentOptions): RestClientResponse { return <RestClientResponse>{}; }
 }

@@ -12,27 +12,29 @@ const paths = {
   NOT_FOUND: '*',
 };
 
+// tslint:disable
 const openPaths = [
   paths.HOME,
   paths.NOT_FOUND,
 ];
 
-const userAccess = [];
+const userAccess = []
 
 const adminAccess = [];
+// tslint:enable
 
 export default ({ store }) => {
-  const performAcdCheck = (nextState, replace) => {
-    // const [, nextRoute] = nextState.routes;
-    // const currentPath = nextState.location.pathname;
-    // if (adminAccess.includes(nextRoute.path)) {
+  // const performAcdCheck = (nextState, replace) => {
+  //   const [, nextRoute] = nextState.routes;
+  //   const currentPath = nextState.location.pathname;
+  //   if (adminAccess.includes(nextRoute.path)) {
 
-    // } else if(userAccess.includes(nextRoute.path)) {
+  //   } else if(userAccess.includes(nextRoute.path)) {
 
-    // } else if(openPaths.includes(nextRoute.path)) {
+  //   } else if(openPaths.includes(nextRoute.path)) {
 
-    // }
-  };
+  //   }
+  // };
 
   return (
     <Route path={ paths.HOME } component={ App }>
