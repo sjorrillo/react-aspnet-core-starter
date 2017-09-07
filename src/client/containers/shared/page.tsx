@@ -9,7 +9,7 @@ interface PageProps extends BasicProps {
   footer?: object | string;
 }
 
-export class Page extends Component<PageProps,{}> {
+export class Page extends Component<PageProps, {}> {
 
   renderHeader = () => {
     const { header } = this.props;

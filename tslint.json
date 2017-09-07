@@ -60,6 +60,6 @@
     "triple-equals": [true, "allow-null-check"],
     "typedef": [true,"parameter", "property-declaration"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"],
-    "whitespace": [true, "check-branch", "check-operator"]
+    "whitespace": [true, "check-branch", "check-operator", "check-separator", "check-decl", "check-type"]
   }
 }

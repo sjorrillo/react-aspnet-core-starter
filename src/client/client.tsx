@@ -9,7 +9,7 @@ import getRoutes from './routing';
 import { client } from './modules/api-client';
 
 const routingMiddleware = routerMiddleware(browserHistory);
-const store = createStore(client, routingMiddleware, {});// window.__data)
+const store = createStore(client, routingMiddleware, {}); // window.__data)
 const history = syncHistoryWithStore(browserHistory, store);
 const appContainer = document.getElementById('app');
 

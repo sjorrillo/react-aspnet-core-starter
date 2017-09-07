@@ -20,7 +20,13 @@ const webpackConfig = ({ entry, indexPath, outputPath }) => {
             { loader: 'awesome-typescript-loader', options: { silent: true } }
           ]
         },
-        { test: /\.tsx?$/, loader: 'tslint-loader', enforce: 'pre', options: { failOnHint: true } }
+        {
+          test: /\.tsx?$/, loader: 'tslint-loader', enforce: 'pre', options: {
+            failOnHint: true,
+            formatter: 'grouped',
+            formattersDirectory: 'node_modules/custom-tslint-formatters/formatters'
+          }
+        }
       ]
     },
     plugins: [
