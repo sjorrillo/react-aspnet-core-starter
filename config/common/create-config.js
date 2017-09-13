@@ -1,10 +1,10 @@
-import { process } from './globals';
 import merge from 'lodash/merge';
+import envVal from './env-val';
 
 const baseEnvironment = 'development'; //base config environment
 
 const getEnvironment = () => {
-  let nodeEnv = process.env.NODE_ENV || '';
+  const nodeEnv = envVal('NODE_ENV', baseEnvironment);
   if (!nodeEnv.match(/^development$|^integration$|^production$/i)) return baseEnvironment;
   return nodeEnv;
 };

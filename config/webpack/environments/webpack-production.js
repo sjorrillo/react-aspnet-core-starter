@@ -1,9 +1,10 @@
-
-
-const productionConfig = {
-  devtool: 'source-map',
-  cache: false,
-  debug: true,
+const makeConfig = () => {
+  const config = {
+    devtool: 'source-map',
+    cache: false,
+    debug: true,
+  };
+  return config;
 };
 
-export default productionConfig;
+export default makeConfig;

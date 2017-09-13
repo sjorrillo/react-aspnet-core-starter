@@ -1,11 +1,16 @@
 import webpackMerge from 'webpack-merge';
 import commonConfig from './webpack-common';
+import envVal from '../common/env-val';
 
 export const makeConfig = ({ env, entry, indexPath, outputPath }) => {
-  const envConfig = require(`./environments/webpack-${env}`); // eslint-disable-line
+  const makeEnvConfig = require(`./environments/webpack-${env}`); // eslint-disable-line
   return webpackMerge(commonConfig({
     entry,
     indexPath,
-    outputPath
-  }), envConfig);
+    outputPath,
+  }),
+  makeEnvConfig({
+    serverPort: envVal('PORT', 3000),
+    serverHost: envVal('HOST', 'localhost'),
+  }));
 };

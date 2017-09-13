@@ -1,8 +1,10 @@
-
-const integrationConfig = {
-  devtool: 'inline-source-map',
-  cache: false,
-  debug: true,
+const makeConfig = () => {
+  const config = {
+    devtool: 'inline-source-map',
+    cache: false,
+    debug: true,
+  };
+  return config;
 };
 
-export default integrationConfig;
+export default makeConfig;
