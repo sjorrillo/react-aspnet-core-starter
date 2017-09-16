@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   app: {
     name: 'React AspNet Core Starter',
   },
