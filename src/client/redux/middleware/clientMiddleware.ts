@@ -1,8 +1,26 @@
+const getCommonHeaders = () => ({
+  'X-Request-Id': 'Test request id',
+});
+
+const requestFactory = (dispatch, getState, client) =>
+  async ({ method, url, data, params }) => {
+    const request = client[method.toLowerCase()];
+    let response;
+    try {
+      const headers = getCommonHeaders();
+      const result = await request(url, { headers, data, params });
+      response = { result };
+    } catch (error) {
+      response = { error };
+    }
+    return response;
+  };
+
 export const clientMiddleware = client =>
   ({ dispatch, getState }) =>
     next => action => {
       if (typeof action === 'function') {
-        return action(dispatch, getState);
+        return action(requestFactory(dispatch, getState, client), dispatch, getState);
       }
 
       const { promise, types, ...rest } = action;
@@ -15,6 +33,9 @@ export const clientMiddleware = client =>
         ...rest,
         type: REQUEST,
       });
+
+      const headers = getCommonHeaders();
+      client.setExtraHeaders(headers);
 
       const actionPromise = promise(client);
       actionPromise.then(
